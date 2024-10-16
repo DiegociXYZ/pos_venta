@@ -26,4 +26,5 @@
         <script>
             const base_url = "<?php echo base_url; ?>";
         </script>
+        <script src="<?php echo base_url; ?>Assets/js/sweetalert2.all.min.js"></script>
         <script src="<?php echo base_url; ?>Assets/js/funciones.js"></script>
