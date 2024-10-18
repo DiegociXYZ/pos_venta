@@ -22,7 +22,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="my-modal-title">Nuevo Usuario</h5>
+                <h5 class="modal-title" id="title">Nuevo Usuario</h5>
                 <button class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -31,15 +31,15 @@
                 <form method="post" id="frmUsuario">
                     <div class="form-group">
                         <label for="usuario">Usuario</label>
+                        <input type="hidden" id="id" name="id">
                         <input id="usuario" class="form-control" type="text" name="usuario" placeholder="Usuario">
                     </div>
                     <div class="form-group">
                         <label for="nombre">Nombre</label>
                         <input id="nombre" class="form-control" type="text" name="nombre" placeholder="Nombre del usuario">
                     </div>
-                    <div class="row">
+                    <div class="row"id="claves">
                         <div class="col-md-6">
-
                             <div class="form-group">
                                 <label for="clave">Contraseña</label>
                                 <input id="clave" class="form-control" type="password" name="clave" placeholder="Contraseña">
@@ -61,7 +61,7 @@
                                 <?php } ?>
                         </select>
                     </div>
-                    <button class="btn btn-primary" type="button"onclick="registrarUser(event)">Registrar</button>
+                    <button class="btn btn-primary" type="button"onclick="registrarUser(event);"id="btnAccion">Registrar</button>
                 </form>
             </div>
         </div>
