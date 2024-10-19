@@ -147,5 +147,82 @@ function btnEditarUser(id){
                 $("#nuevo_usuario").modal("show");
             }
         }
-    
 }
+function btnEliminarUser(id) {
+    Swal.fire({
+        title: "Esta seguro de eliminar?",
+        text: "El usuario no se eliminara de forma permanente, solo cambiara el estado a inactivo!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Si!",
+        cancelButtonText: 'No'
+      }).then((result) => {
+        if (result.isConfirmed) {
+
+            const url = base_url + "Usuarios/eliminar/"+id;
+            const http = new XMLHttpRequest();
+            http.open("GET", url, true);
+            http.send();
+            http.onreadystatechange = function(){
+                if (this.readyState== 4 && this.status == 200) {
+                    const res = JSON.parse(this.responseText);
+                    if (res == "ok") {
+                        Swal.fire({
+                        title: "Mensaje!",
+                        text: "Usuario eliminado con exito.",
+                        icon: "success"
+                        });
+                        tblUsuarios.ajax.reload();
+                    }else{
+                        Swal.fire({
+                            title: "Mensaje!",
+                            text: res,
+                            icon: "error"
+                        });
+                    }
+                }
+            }
+        }
+    });
+}
+function btnReingresarUser(id) {
+    Swal.fire({
+        title: "Esta seguro de reingresar?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Si!",
+        cancelButtonText: 'No'
+      }).then((result) => {
+        if (result.isConfirmed) {
+
+            const url = base_url + "Usuarios/reingresar/"+id;
+            const http = new XMLHttpRequest();
+            http.open("GET", url, true);
+            http.send();
+            http.onreadystatechange = function(){
+                if (this.readyState== 4 && this.status == 200) {
+                    const res = JSON.parse(this.responseText);
+                    if (res == "ok") {
+                        Swal.fire({
+                        title: "Mensaje!",
+                        text: "Usuario reingresado con exito.",
+                        icon: "success"
+                        });
+                        tblUsuarios.ajax.reload();
+                    }else{
+                        Swal.fire({
+                            title: "Mensaje!",
+                            text: res,
+                            icon: "error"
+                        });
+                    }
+                }
+            }
+        }
+    });
+}
+
